@@ -27,5 +27,18 @@ jobs:
           with:
             node-version: ${{ matrix.node-version }}
 
+        # Install dependencies
         - run: npm i
+
+        # Create and run database
+        - run: mkdir data
+        - run: cd data
+        - run: mkdir db
+        - run: cd ..
+        - run: mongod --dbpath=./data/db
+
+        # Run server
+        - run: npm start
+
+        # Run tests
         - run: npm test
