@@ -33,14 +33,6 @@ jobs:
           with:
             mongodb-version: ${{ matrix.mongodb-version }}
 
-        - name: Initialize Database
-          run: |
-            mkdir data
-            cd data
-            mkdir db
-            cd ..
-            mongod --dbpath=./data/db
-
         # Install dependencies
         - run: npm i
 
